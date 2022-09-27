@@ -11,20 +11,33 @@ from .forms import ProjectCreateForm ,ProjectupdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin ,UserPassesTestMixin
 
 ## 2)
-
 class ProjectListView(LoginRequiredMixin, ListView):
-    model = Project                                  #= define the class
+    model = Project
     template_name = 'project/list.html'
-    paginate_by = 3
+    paginate_by = 6
 
-    # to get the search word in the page list
     def get_queryset(self):
         query_set = super().get_queryset()
-        where = {'user_id': self.request.user}  # > include the request terms  ,,,,{'user_id':self.request.user} =>and put in it the protect standard
-        q = self.request.GET.get('q', None)       #=> ensure if the word 'q' are exist
+        where = {'user_id': self.request.user}
+        q = self.request.GET.get('q', None)
         if q:
             where['title__icontains'] = q
         return query_set.filter(**where)
+
+
+# class ProjectListView(LoginRequiredMixin, ListView):
+#     model = Project                                  #= define the class
+#     template_name = 'project/list.html'
+#     paginate_by = 3
+
+#     # to get the search word in the page list
+#     def get_queryset(self):
+#         query_set = super().get_queryset()
+#         where = {'user_id': self.request.user}  # > include the request terms  ,,,,{'user_id':self.request.user} =>and put in it the protect standard
+#         q = self.request.GET.get('q', None)       #=> ensure if the word 'q' are exist
+#         if q:
+#             where['title__icontains'] = q
+#         return query_set.filter(**where)
 
 
 
