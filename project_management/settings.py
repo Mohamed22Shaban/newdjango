@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-=aw8hhiqiq1zcvgn)=mx1i_!3+3v8@4a%g39g=_l44dg+$c-&o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'first-company.herokuapp.com','127.0.0.1'
+]
 
 
 # Application definition
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,11 +83,11 @@ WSGI_APPLICATION = 'project_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fristdjango',
-        'USER': 'postgres',
-        'PASSWORD': 'superuser',
-        'HOST': 'localhost',
-        'PORT': ''
+        'NAME': 'd24cebuibt6md7',
+        'USER': 'xdrxhszathqsjb',
+        'PASSWORD': '7533545f585d0e7fc928e35d2a556713963d6e9382544a8b9cc9c5df24187e69',
+        'HOST': 'ec2-54-246-185-161.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
